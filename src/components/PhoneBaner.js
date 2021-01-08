@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {graphql, useStaticQuery} from 'gatsby'
 import Image from 'gatsby-image'
+
+import {useIntl} from 'gatsby-plugin-intl';
+import { AppContext } from './AppContext';
 
 // CSS //
 const StyledPhoneBaner = styled.div`
@@ -30,18 +33,34 @@ const StyledPhoneBaner = styled.div`
         filter: drop-shadow(0px 4px 4px black);
         margin:0;
     }
+
+    @media (max-width: 600px){
+        
+        h2{
+            font-size: 5.2rem;
+        }
+        h3{
+            font-size: ${(props) => props.theme.fontSize.veryBig};
+        }
+    }
 `
 
 // COMPONENT //
 const PhoneBaner = ({phoneNumber}) => {
     const data = useStaticQuery(query);
     const background = data.imageSharp.fluid.src;
-    const hrefLink = `tel:${phoneNumber}`;
+    
+    const intl = useIntl();
+    
+    const {contactInfo: {phone}} = useContext(AppContext);
+    const hrefLink = `tel:${phone}`;
+    
+
     return(
         <StyledPhoneBaner background={background}>
             <div className="background"></div>
             <h3>Szukasz szybkiej i konretnej informacji?</h3>
-            <h2>Zadzwoń <a href={hrefLink}> {phoneNumber}</a> </h2>
+            <h2>{intl.formatMessage({id: "call"})} <a href={hrefLink}> {phone}</a> </h2>
         </StyledPhoneBaner>
     )
 }

@@ -1,0 +1,25 @@
+{
+
+    "home" : "Huis",
+    "work": "Baan",
+    "contact": "Contact",
+
+    "heroButton": "Bestel schoonmaak!",
+    "heroFacebook": "Bekijk ons!",
+    "offer": "Aanbod",
+    "cleaning": "Schoonmaak",
+    "lookingWork": "U zoekt een baan?",
+    "lookingWork2": "Bekijk actuele vacatures!",
+    "check": "Bekijken",
+    "call": "Bel ons",
+
+    "actualAnnouncements": "Huidige aankondigingen",
+    "date": "datum",
+    "join": "Toetreden",
+
+    "phoneNumber": "Telefoonnummer",
+    "facebookGroup": "Groep baanaanbiedingen die Facebook schoonmaken",
+    "message": "Bericht",
+    "send": "Sturen"
+  
+}

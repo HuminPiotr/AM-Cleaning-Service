@@ -1,0 +1,26 @@
+{
+
+    "home" : "Strona główna",
+    "work": "Praca",
+    "contact": "Kontakt",
+
+    "heroButton": "Zamów sprzątanie!",
+    "heroFacebook": "Obserwuj nas!",
+    "offer": "Oferta",
+    "cleaning": "Sprzątanie",
+
+    "lookingWork": "Szukasz pracy?",
+    "lookingWork2": "Sprawdź aktualne oferty pracy!",
+    "check": "Sprawdź",
+    "call": "Zadzwoń",
+
+    "actualAnnouncements": "Aktualne ogłoszenia",
+    "date": "data",
+    "join": "dołącz",
+
+    "phoneNumber": "Numer telefonu",
+    "facebookGroup": "Grupa oferty pracy sprzątanie Facebook",
+    "message": "Wiadomość",
+    "send": "Wyślij"
+
+}

@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import {useIntl} from 'gatsby-plugin-intl';
+
 import envelopeIcon from '../assets/images/envelope.svg';
 
 
@@ -38,25 +40,38 @@ const StyledNoticeCard = styled.div`
     .icon:hover{
         transform: translateY(-10%);
     }
+
+    @media (max-width: 600px){
+        font-size: 20px;
+    }
 `
 
 // COMPONENT //
 const NoticeCard = ({cardObject, id}) => {
     const {title, date, text} = cardObject;
 
+    const intl = useIntl();
+    const locale = intl.locale !=="pl" ? `${intl.locale}` : "pl";
+
+    
+
     const handleClick = (e) => {
-        const emailContent = `Dzień dobry! \nJestem zainteresowany ogłoszeniem "${title}".  
-        `
+        const emailContent = locale == 'pl' 
+            ? `Dzień dobry! \nJestem zainteresowany ogłoszeniem "${title}". \n...  
+            `
+            : `Hallo! \nIk ben geïnteresseerd in de aankondiging "${title}."
+            \n...`
+            
         const textArea = document.querySelector('#mesage');
         const contactFormSection = document.querySelector('.contactFormSection');
         textArea.value = emailContent;
         contactFormSection.scrollIntoView({behavior:"smooth"});
-        startAnimation(e.target);
+        // startAnimation(e.target);
     }
 
-    const startAnimation = (target) => {
-        console.log(target);
-    }
+    // const startAnimation = (target) => {
+    //     console.log(target);
+    // }
 
 
     return(
@@ -64,7 +79,7 @@ const NoticeCard = ({cardObject, id}) => {
             <hr />
             <article>
                 <h2>{title}</h2>
-                <aside>data: {date}</aside>
+                <aside>{intl.formatMessage({id: "date"})}: {date}</aside>
                 <p>{text}</p>
             </article>
             <button onClick={handleClick}>

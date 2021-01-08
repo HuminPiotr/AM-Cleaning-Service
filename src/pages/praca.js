@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 
@@ -8,12 +8,14 @@ import ContactForm from  '../components/ContactForm';
 import PhoneBaner from '../components/PhoneBaner'
 import SEO from "../components/seo"
 
+import {useIntl} from 'gatsby-plugin-intl';
 
 import backgroundFb from '../assets/images/backgroundFbSection.svg';
 import iconFb from '../assets/images/roundedFacebookIcon.svg';
 import star1  from '../assets/images/star1.png'
 import star2  from '../assets/images/star2.png'
 import star3  from '../assets/images/star3.png'
+import { AppContext } from "../components/AppContext";
 
 const title = "Praca"
 
@@ -33,6 +35,12 @@ const StyledWrapper = styled.div`
         flex-shrink: -1;
         flex-grow: 1;
         justify-content: space-evenly;
+
+        &__info{
+            color: ${({theme}) => theme.color.teal};
+            font-size: ${({theme}) => theme.fontSize.big};
+            margin-bottom: 100px;
+        }
     }
     .star{
         position: absolute;
@@ -47,7 +55,7 @@ const StyledWrapper = styled.div`
     }
     #star1{
         top: -5%;
-        left: 10%;
+        left: 15%;
         animation-delay: 2.5s;
     }
     #star2{
@@ -55,8 +63,8 @@ const StyledWrapper = styled.div`
         right: 15%;
     }
     #star3{
-        bottom: 40%;
-        right: 15%;
+        top: 0%;
+        left: 5%;
         animation-delay: 1s;
     }
     .facebookSection{
@@ -92,6 +100,39 @@ const StyledWrapper = styled.div`
 
     }
 
+    @media (max-width: 600px){
+        .star{
+            display: none;
+        }
+        h1{
+            margin: 0;
+        }
+        .noticeBoard{
+            
+            .noticeCard{
+                max-width: 100%;
+            }
+        }
+
+        .facebookSection{
+           &__content{
+               top: 40%;
+               margin: auto;
+               width: 100%;
+               padding: 25px;
+               flex-direction: column;
+         
+           }
+           &__icon{
+               width: 100px;
+           }
+            h2{
+                font-size: ${({theme}) => theme.fontSize.veryBig}
+            }
+        }
+    }
+
+
         // ANIMATIONS //
         @keyframes starAnimation{
       0%{
@@ -105,26 +146,32 @@ const StyledWrapper = styled.div`
       }
     }
 `
-const cardObject = {
-    title: "Sprzątanie domków letniskowych Gouda",
-    date: "24.04.2021",
-    text: "Lotem ipsun dolor Lotem ipsun dolor Lotem ipsun dolor Lorem ipsum."
-  }
 
-  const groupFbLink = "https://www.facebook.com"
+
+
+
 
 const WorkPage = ({data}) => {
 
-    const noticeCardList = data.allDatoCmsOgloszenie.nodes.map( (item, index) => 
-        <NoticeCard id={item.id} cardObject={{title: item.title, date: item.date, text: item.content}} />
+    const intl = useIntl();
+
+    const {language, contactInfo: {facebookGroup}} = useContext(AppContext);
+
+    const filtredNoticeCardList = data.allDatoCmsOgloszenie.nodes.filter((item) => item.locale === language);
+
+    const noticeCardList = filtredNoticeCardList.map( (item, index) => 
+    <NoticeCard id={item.id} cardObject={{title: item.title, date: item.date, text: item.content}} key={item.id}/>
     );
+
+    
+
 
     return(
         <StyledWrapper>
         <SEO title={title} />
-            <h1>Aktualne ogłoszenia</h1>
+            <h1>{intl.formatMessage({id: "actualAnnouncements"})}</h1>
             <div className="noticeBoard">
-                {noticeCardList}
+                {noticeCardList.length <= 0 ? <p className="noticeBoard__info">W tej chwili nie mamy żadnych nowych ogłoszeń. </p>: noticeCardList}
 
                 {/* *** STARS *** */}
                 <img src={star2} alt="star" id="star2" className="star"
@@ -152,7 +199,7 @@ const WorkPage = ({data}) => {
                     <img src={iconFb} className="facebookSection__icon" alt="facebook-icon"/>
                     <div className="facebookSection__content-text">
                         <h2>Dołącz do naszej grupy z ofertami pracy na facebooku!</h2>
-                        <Button link={groupFbLink} target="_blank">Dołącz</Button>
+                        <Button link={facebookGroup} target="_blank">{intl.formatMessage({id: "join"})}</Button>
                     </div>
                 </div>
             </section>
@@ -168,6 +215,10 @@ const WorkPage = ({data}) => {
     )
     }
 
+
+
+
+
 export const query = graphql`
 {
     allDatoCmsOgloszenie {
@@ -176,10 +227,10 @@ export const query = graphql`
         title
         content
         id
+        locale
       }
     }
   }
 `
-
 
 export default  WorkPage

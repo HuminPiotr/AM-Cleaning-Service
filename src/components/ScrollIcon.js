@@ -35,6 +35,12 @@ const StyledScrollIcon = styled.div`
             transform: translateY(46px)
         }
     }
+
+    @media (max-width:600px){
+        left: 50%;
+
+         transform: translateX(-50%);
+    }
 `
 //COMPONENT//
 const ScrollIcon = () => (

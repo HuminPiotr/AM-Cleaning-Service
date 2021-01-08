@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 
 import Logo from '../components/Logo'
 import Navigation from '../components/Navigation'
+import { AppContext } from './AppContext';
 
 // CSS //
 const StyledFooter = styled.footer`
@@ -51,28 +52,54 @@ const StyledFooter = styled.footer`
     }
     }
 
+    @media (max-width: 600px){
+        padding: 25px;
+        text-align: center;
+        flex-direction: column;
+        .footer{
+            &__logo{
+                .logo{
+                padding: 0;
+                width: 50vw;
+                }
+
+            }
+            &__info{
+                text-align: center;
+            }
+            &__center{
+                order: 3;
+                align-self: center;
+            }
+        }
+    }
+
 `
 // COMPONENT //
-const Footer = () => (
-    <StyledFooter className="footer">
-        <div className="footer__logo">
-            <Logo />
-        </div>
+const Footer = () => {
+    const {contactInfo: {phone, email}} = useContext(AppContext);
 
-        <div className="footer__center"> 
-          <a href="http://www.freepik.com">Designed by Freepik</a>
-        </div>
-          
-        <div className="footer__info">
-            <p className="footer__contact">
-                <p>amcleaningservices1@hotmail.com</p>
-                <p>123 123 123</p>
-            </p>
-            <Navigation />
-        </div>
+    return(
+        <StyledFooter className="footer">
+            <div className="footer__logo">
+                <Logo />
+            </div>
 
-    </StyledFooter>
-)
+            <div className="footer__center"> 
+            <a href="http://www.freepik.com">Designed by Freepik</a>
+            </div>
+            
+            <div className="footer__info">
+                <p className="footer__contact">
+                    <p>{email}</p>
+                    <p>{phone}</p>
+                </p>
+                <Navigation />
+            </div>
+
+        </StyledFooter>
+    )
+}
 
 
 export default Footer;

@@ -13,6 +13,11 @@ transition:.3s;
 @media(min-width: 2100px){
   padding: 50px;
 }
+
+@media(max-width: 600px){
+  width: 135px;
+  
+}
 `;
 
 

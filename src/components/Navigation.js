@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'gatsby';
 
+import {useIntl} from 'gatsby-plugin-intl';
 
 
 const StyledNavigation = styled.nav`
@@ -55,20 +56,61 @@ const StyledNavigation = styled.nav`
         margin: 0 50px;
         }
     }
+
+    @media(max-width: 600px){
+        /* ul{
+            flex-direction: column;
+            text-align: center;
+            
+            li{
+                margin: 25px 0;
+            }
+        } */
+        display: none;
+        position: fixed;
+        top: 150px;
+        left:0;
+        width: 100vw;
+        height: 100vh;
+        background: ${({theme}) => theme.color.gray};
+
+        ul{
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            li{
+                margin-bottom: 25px;
+                a{
+                    font-size: 34px !important;
+                }
+
+            }
+        }
+
+        
+
+    }
 `
 
 
-const Navigation = () => (
+
+
+const Navigation = () => {
+const intl = useIntl();
+const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+
+return(
     <StyledNavigation>
         <ul>
-            <li><Link activeClassName="active" to="/">Stronga główna</Link></li>
-            <li><Link activeClassName="active" to="/praca">Praca</Link></li>
-            <li><Link activeClassName="active" to="/kontakt">Kontakt</Link></li>
+            <li><Link activeClassName="active" to={`${locale}/`}>{intl.formatMessage({id: "home"})}</Link></li>
+            <li><Link activeClassName="active" to={`${locale}/praca`}>{intl.formatMessage({id: "work"})}</Link></li>
+            <li><Link activeClassName="active" to={`${locale}/kontakt`}>{intl.formatMessage({id: "contact"})}</Link></li>
         </ul>
     </StyledNavigation>
     
 
 )
+}
 
 export default Navigation;
 

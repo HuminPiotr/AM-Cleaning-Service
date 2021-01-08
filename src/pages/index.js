@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
+import {useIntl} from 'gatsby-plugin-intl';
+
 import Button from '../components/Button'
 import SocialButton from '../components/SocialButton'
 import ScrollIcon from '../components/ScrollIcon';
@@ -69,8 +71,10 @@ const Hero = styled.section`
       z-index: 5;
       animation-delay: .3s;
     }
-
   }
+  #mobileStar{
+      display: none;
+    }
 
   .hero__text{
     height: calc(100vh - 150px);
@@ -93,6 +97,12 @@ const Hero = styled.section`
       
       @media (min-width:2100px){
         height:auto;
+        
+      }
+      @media (max-width: 600px){
+        padding-left: 50px;
+
+
       }
     }
 
@@ -115,6 +125,40 @@ const Hero = styled.section`
       100%{
         transform:scale(1);
       }
+    }
+
+    @media(max-width: 600px){
+      .star{
+        display: none;
+      }
+      .hero{
+        &__text{
+          max-width: 100%;
+
+          h1{
+            font-size: 36px;
+           
+            text-shadow: 1px 1px 4px white;
+          }
+        }
+        &__star{
+          position: absolute;
+        }
+      }
+      
+      #mobileStar{
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right:25px;
+      width: 100px;
+
+      transform:scale(0);
+      animation-name: starAnimation;
+      animation-duration: .4s;
+      animation-delay: .3s;
+      animation-fill-mode: forwards;
+    }
     }
 
     
@@ -147,6 +191,16 @@ const Description = styled.section`
       font-weight: bold;
     }
   }
+
+  @media(max-width: 600px){
+    background-image: none;
+
+    .text{
+      width: 100%;
+      padding: 15px;
+      margin:0;
+    }
+  }
   
 `
 
@@ -169,6 +223,7 @@ const Offer = styled.section`
     text-align: center;
     margin: 0;
     margin-top: 25px;
+    
     font-size: ${({theme}) => theme.fontSize.gross};
   }
 
@@ -185,7 +240,14 @@ const Offer = styled.section`
     }
   }
 
+  @media (max-width: 600px){
+    align-content: flex-start;
+    background-image: none;
 
+    h2{
+      margin-bottom: 50px;
+    }
+  }
 `
 
 const SectionMap = styled.section`
@@ -227,6 +289,21 @@ const SectionMap = styled.section`
       font-size: ${({theme}) => theme.fontSize.veryBig};
     
   }
+  }
+
+  @media (max-width: 600px){
+    .woman{
+      display: none;
+      width:0;
+      height:0;
+    }
+    .map{
+      width: 100%;
+      padding: 50px 35px;
+      
+    }
+   
+  }
 `
 
 const SectionWork = styled.section`
@@ -257,15 +334,29 @@ const SectionWork = styled.section`
     }
   }
 
-  .woman{
+  @media (max-width: 600px){
+    .woman{
+      display: none;
+    }
+    .text{
+      width: 100%;
+      h2{
+        font-size: 5.4rem;
+      }
+      h3{
+        font-size: 3.4rem;
+      }
 
+    }
   }
 `
 
 
 
 const IndexPage = ({data}) => {
-
+  const intl = useIntl();
+  const language = intl.locale;
+  
     return(
     <>
     {/* <SEO title="Home" /> */}
@@ -281,11 +372,14 @@ const IndexPage = ({data}) => {
         <h1>Profesjonalne <span>sprzątanie</span> dla 
             Ciebie i Twojej firmy!
         </h1>
-        <Button link="#hiperForm"> Zamów sprzątanie! </Button>
+        <Button link="#hiperForm"> 
+          {intl.formatMessage({id: "heroButton"})}
+        </Button>
 
         <ScrollIcon />
 
         <SocialButton className="hero__facebook" link="https://www.facebook.com/AMKocon/" />
+        <img src={star2} alt="star" id="mobileStar" className="star"/>
       </div>
 
       
@@ -302,9 +396,9 @@ const IndexPage = ({data}) => {
 
       <Offer background={data.backgroundOffer.fluid.src}>
         <Curtain />
-          <h2>Oferta</h2>
+          <h2>{intl.formatMessage({id: "offer"})}</h2>
           <div className="text">
-            <h3>Sprzątanie:</h3>
+            <h3>{intl.formatMessage({id: "cleaning"})}:</h3>
             <ul >
               <li>pokoi hotelowych</li>
               <li>sal konferencyjnych oraz recepcji</li>
@@ -331,9 +425,9 @@ const IndexPage = ({data}) => {
 
       <SectionWork id="hiperForm" >
        <div className="text">
-          <h2>Szukasz pracy?</h2>
-          <h3>Sprawdź aktualne oferty pracy!</h3>
-          <Button link="/praca"> Sprawdź </Button>
+          <h2>{intl.formatMessage({id: "lookingWork"})}</h2>
+          <h3>{intl.formatMessage({id: "lookingWork2"})}</h3>
+          <Button link="/praca"> {intl.formatMessage({id: "check"})} </Button>
         </div>
 
         <div className="woman">

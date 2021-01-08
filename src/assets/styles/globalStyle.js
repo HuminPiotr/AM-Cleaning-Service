@@ -41,6 +41,12 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
     }
+
+    @media (max-width:600px){
+        html{
+        font-size: 52.5%;
+    }
+    }
 `
 
 export default GlobalStyle;

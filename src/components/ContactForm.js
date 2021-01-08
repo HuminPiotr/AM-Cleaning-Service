@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import {useIntl} from 'gatsby-plugin-intl';
+
 import background from '../assets/images/section5.jpg';
 
 const StyledWrapper = styled.section`
@@ -13,7 +15,13 @@ const StyledWrapper = styled.section`
     justify-content: flex-end;
     background-image : url(${background});
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
+
+    @media (max-width: 600px){
+        padding: 25px 10px;
+        background-image: none;
+        background-color: ${({theme}) => theme.color.gray};
+    }
 `
 const StyledContantForm = styled.div`
     width: 60vw;
@@ -66,14 +74,36 @@ const StyledContantForm = styled.div`
         font-size: ${({theme}) => theme.fontSize.regular};
     }
 
+    @media (max-width: 600px){
+        width: 100%;
+        
+        
+
+        legend{
+            font-size: ${({theme}) => theme.fontSize.veryBig};
+            margin: 0;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .field{
+            padding: 10px 15px;
+            padding-top: 0;
+        }
+        #email{
+            width: 100%;
+        }
+        .button{
+            margin: 10px 15px;
+        }
+    }
 `
 
 const StyledButton = styled.div`
     position: relative;
-    margin: 50px 15px;
+    margin: 35px 15px;
     float: right;
     border-radius: 15px;
-    font-size: ${(props) => props.theme.fontSize};
+    font-size: ${(props) => props.theme.fontSize.big};
     background-color: ${(props) => props.theme.color.coral};
    
     transition: .2s;
@@ -115,7 +145,11 @@ const StyledButton = styled.div`
  
 `
 
-const ContactForm = ({title}) => (
+const ContactForm = ({title}) => { 
+const intl = useIntl();
+const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+
+return(
     <StyledWrapper className="contactFormSection">
         <StyledContantForm >
             <form name="" method="POST" data-netlify="true">
@@ -126,18 +160,19 @@ const ContactForm = ({title}) => (
                 </div>
 
                 <div className="field">
-                    <label for="mesage">Wiadomość</label>
+                    <label for="mesage">{intl.formatMessage({id: "message"})}</label>
                     <textarea name="mesage" id="mesage" required wrap="hard"  />
                 </div>
                 
-                <StyledButton>
+                <StyledButton className="button">
                     <div className="hoverEffect"></div>
-                    <input type="submit" id="submit" value="Wyślij"></input>
+                    <input type="submit" id="submit" value={intl.formatMessage({id: "send"})}></input>
                 </StyledButton>
             </form>
         </StyledContantForm>
     </StyledWrapper>
-);
+)
+}
 
 // PROP-TYPES //
 ContactForm.propTypes = {

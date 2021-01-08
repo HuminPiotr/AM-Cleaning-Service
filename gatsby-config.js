@@ -57,6 +57,19 @@ module.exports = {
           exitEventName: 'sal:out', // Exit event name
       }
     },
+      {
+        resolve: `gatsby-plugin-intl`,
+        options: {
+          // Directory with the strings JSON
+          path: `${__dirname}/src/intl`,
+          // Supported languages
+          languages: [`pl`, `nl`],
+          // Default site language
+          defaultLanguage: `pl`,
+          // Redirects to `/pl` in the route `/`
+          redirect: false,
+        },
+      },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // {

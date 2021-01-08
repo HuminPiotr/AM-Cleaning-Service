@@ -6,16 +6,18 @@ import theme from '../assets/styles/theme';
 import TopNav from '../components/TopBar';
 import LanguageButton from '../components/LanguageButton'
 import Footer from '../components/Footer'
+import AppProvider from "../components/AppContext";
 
 
 const MainLayout = ({children}) => (
     <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
-    <TopNav />
-    {children}
-        
+    <AppProvider>
+        <TopNav />
+            {children}
         <Footer />
+    </AppProvider>
     </ThemeProvider>
     </>
 

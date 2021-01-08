@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
+import { AppContext } from './AppContext'
 
 // CSS //
 const StyledLanguageButton = styled.button`
@@ -38,6 +39,13 @@ const StyledLanguageButton = styled.button`
 
     @media (min-width:2100px){
         font-size: ${({theme}) => theme.fontSize.big};
+    }
+
+    @media (max-width: 600px){
+        position: absolute;
+        top: 15px;
+        left: 5px;
+        z-index: 2;
     }
 `
 
@@ -79,6 +87,11 @@ const ChangePanel = styled.div`
                 padding: 30px;
             }
         }
+
+        @media(max-width: 600px){
+            /* bottom: calc(-50% + 30px) ; */
+            bottom: -50%;
+        }
 `
 
 // COMPONENT //
@@ -89,6 +102,8 @@ const LanguageButton = () => {
     }
 
     const [state, setState] = useState(initialLanguages)
+    const {language, contactInfo} = useContext(AppContext);
+
 
     function handleClick(){
         const button = document.querySelector('.languageButton');
