@@ -23,24 +23,24 @@ module.exports = {
         apiToken: process.env.API_DATO_CMS,
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Lato`,
-            subsets: [`latin-ext`],
-            variants: [`400`,`500`, `600`],
-          },
-          {
-            family: `Bebas Neue`,
-            subsets: [`latin-ext`],
-            variants: [`400`,`500`, `600`],
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Lato`,
+    //         subsets: [`latin-ext`],
+    //         variants: [`400`,`500`, `600`],
+    //       },
+    //       {
+    //         family: `Bebas Neue`,
+    //         subsets: [`latin-ext`],
+    //         variants: [`400`,`500`, `600`],
            
-          }
-        ],
-      },
-    },
+    //       }
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
