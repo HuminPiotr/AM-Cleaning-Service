@@ -85,7 +85,7 @@ const StyledTopBar = styled.header`
 
        
        &.active{
-           position: fixed;
+           position: sticky;
            top: 0;
            width: 100vw;
            height: 100vh !important;
