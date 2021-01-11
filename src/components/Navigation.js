@@ -57,15 +57,8 @@ const StyledNavigation = styled.nav`
         }
     }
 
-    @media(max-width: 600px){
-        /* ul{
-            flex-direction: column;
-            text-align: center;
-            
-            li{
-                margin: 25px 0;
-            }
-        } */
+    @media(max-width: 640px){
+
         display: none;
         position: fixed;
         top: 150px;
@@ -86,9 +79,12 @@ const StyledNavigation = styled.nav`
 
             }
         }
-
-        
-
+    }
+    @media(min-width: 641px) and (max-width: 1000px){
+        font-size: 1.8rem;
+        a{
+            text-align: center;
+        }
     }
 `
 

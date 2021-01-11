@@ -36,7 +36,7 @@ const StyledScrollIcon = styled.div`
         }
     }
 
-    @media (max-width:600px){
+    @media (max-width:640px){
         left: 50%;
 
          transform: translateX(-50%);

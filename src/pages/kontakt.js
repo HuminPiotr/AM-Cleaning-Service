@@ -68,10 +68,21 @@ const InfoSection = styled.section`
         }
     }
 
-    @media (max-width: 600px){
+    @media (min-width: 641px) and (max-width: 1000px){
+        .contactDiv{
+            flex-direction: column;
+            padding: 0 15px;
+        }
+        .icon{
+            margin: auto;
+        }
+        text-align: center;
+    }
+
+    @media (max-width: 640px){
         text-align: center;
         a{
-        font-size: 17px;
+        font-size: 4.5vw;
 
         }
         .icon{

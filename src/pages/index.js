@@ -41,8 +41,6 @@ const Hero = styled.section`
 
     img{
       position: absolute;
-      
-      
     }
 
     .star{
@@ -54,14 +52,20 @@ const Hero = styled.section`
     }
 
     #star1{
-    right: 42%;
-    bottom: 25%;
+      right: 42%;
+      bottom: 25%;
+      @media(min-width: 641px) and (max-width: 1000px){
+        right: 66%;
+      }
     }
     #star2{
       top: 0;
       right: 36%;
       width: 5vw;
       animation-delay: .4s;
+      @media(min-width: 641px) and (max-width: 1000px){
+        left: 5%;
+      }
     }
     
     #star3{
@@ -97,9 +101,16 @@ const Hero = styled.section`
       
       @media (min-width:2100px){
         height:auto;
+      }
+
+      @media(min-width: 641px) and (max-width: 1000px){
+        h1{
+          font-size: ${({theme}) => theme.fontSize.veryBig};
+        }
         
       }
-      @media (max-width: 600px){
+
+      @media (max-width: 640px){
         padding-left: 50px;
 
 
@@ -127,16 +138,21 @@ const Hero = styled.section`
       }
     }
 
-    @media(max-width: 600px){
+    @media(max-width: 640px){
       .star{
         display: none;
       }
       .hero{
         &__text{
           max-width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex-grow: 0;
+          align-items: center;
 
           h1{
-            font-size: 36px;
+            font-size: 40px;
            
             text-shadow: 1px 1px 4px white;
           }
@@ -156,7 +172,7 @@ const Hero = styled.section`
       transform:scale(0);
       animation-name: starAnimation;
       animation-duration: .4s;
-      animation-delay: .3s;
+      animation-delay: .5s;
       animation-fill-mode: forwards;
     }
     }
@@ -192,7 +208,16 @@ const Description = styled.section`
     }
   }
 
-  @media(max-width: 600px){
+  @media(min-width: 641px) and (max-width: 1000px){
+    background-position-x: -150px;
+    .text{
+      width: 100%;
+      padding: 15px;
+      margin:0;
+    }
+  }
+
+  @media(max-width: 640px){
     background-image: none;
 
     .text{
@@ -238,11 +263,16 @@ const Offer = styled.section`
     ul{
       font-size: ${({theme}) => theme.fontSize.big}
     }
+
   }
 
-  @media (max-width: 600px){
+
+  @media (max-width: 640px){
     align-content: flex-start;
     background-image: none;
+    height: auto;
+    padding-bottom: 50px;
+
 
     h2{
       margin-bottom: 50px;
@@ -290,8 +320,14 @@ const SectionMap = styled.section`
     
   }
   }
+  @media (min-width: 641px) and (max-width: 1000px){
+    .map{
+      padding: 15px;
+      padding-top: 50px;
+    }
+  }
 
-  @media (max-width: 600px){
+  @media (max-width: 640px){
     .woman{
       display: none;
       width:0;
@@ -334,7 +370,13 @@ const SectionWork = styled.section`
     }
   }
 
-  @media (max-width: 600px){
+  @media (min-width: 641px) and (max-width: 1000px){
+    .woman{
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 640px){
     .woman{
       display: none;
     }

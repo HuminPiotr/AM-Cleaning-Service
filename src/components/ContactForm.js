@@ -17,10 +17,10 @@ const StyledWrapper = styled.section`
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media (max-width: 600px){
+    @media (max-width: 640px){
         padding: 25px 10px;
         background-image: none;
-        background-color: ${({theme}) => theme.color.gray};
+        background-color: white;
     }
 `
 const StyledContantForm = styled.div`
@@ -74,7 +74,7 @@ const StyledContantForm = styled.div`
         font-size: ${({theme}) => theme.fontSize.regular};
     }
 
-    @media (max-width: 600px){
+    @media (max-width: 640px){
         width: 100%;
         
         

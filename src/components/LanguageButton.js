@@ -41,7 +41,7 @@ const StyledLanguageButton = styled.button`
         font-size: ${({theme}) => theme.fontSize.big};
     }
 
-    @media (max-width: 600px){
+    @media (max-width: 640px){
         position: absolute;
         top: 15px;
         left: 5px;
@@ -88,7 +88,7 @@ const ChangePanel = styled.div`
             }
         }
 
-        @media(max-width: 600px){
+        @media(max-width: 640px){
             /* bottom: calc(-50% + 30px) ; */
             bottom: -50%;
         }

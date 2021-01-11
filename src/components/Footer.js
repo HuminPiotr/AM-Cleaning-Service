@@ -52,7 +52,7 @@ const StyledFooter = styled.footer`
     }
     }
 
-    @media (max-width: 600px){
+    @media (max-width: 640px){
         padding: 25px;
         text-align: center;
         flex-direction: column;
@@ -60,7 +60,8 @@ const StyledFooter = styled.footer`
             &__logo{
                 .logo{
                 padding: 0;
-                width: 50vw;
+                margin-top: 25px;
+                width: 150px;
                 }
 
             }

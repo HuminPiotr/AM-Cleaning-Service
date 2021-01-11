@@ -34,7 +34,16 @@ const StyledPhoneBaner = styled.div`
         margin:0;
     }
 
-    @media (max-width: 600px){
+    @media (min-width: 641px) and (max-width: 1000px){
+        h2{
+            font-size: 5.2rem;
+        }
+        h3{
+            font-size: ${(props) => props.theme.fontSize.big};
+        }
+    }
+
+    @media (max-width: 640px){
         
         h2{
             font-size: 5.2rem;

@@ -41,6 +41,10 @@ const StyledNoticeCard = styled.div`
         transform: translateY(-10%);
     }
 
+    @media (min-width: 641px) and (max-width: 1000px){
+        max-width: 50%;
+    }
+
     @media (max-width: 600px){
         font-size: 20px;
     }

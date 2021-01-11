@@ -57,6 +57,9 @@ const StyledWrapper = styled.div`
         top: -5%;
         left: 15%;
         animation-delay: 2.5s;
+        @media (min-width: 641px) and (max-width: 1000px){
+            top: -10%;
+        }
     }
     #star2{
         top: -10%;
@@ -93,14 +96,17 @@ const StyledWrapper = styled.div`
                 font-size: ${({theme}) => theme.fontSize.veryBig};
                 padding: 0 25px;
             }
-            &-text{
-                /* width:40%; */
-            }
+
         }
 
     }
+    @media (min-width: 641px) and (max-width: 1000px){
+        .facebookSection__content{
+            width: 80%;
+        }
+    }
 
-    @media (max-width: 600px){
+    @media (max-width: 640px){
         .star{
             display: none;
         }

@@ -19,7 +19,6 @@ const theme = {
         regular: "1.8rem",
         big: "2.4rem",
         veryBig: '3.2rem',
-        // gross: '4.5vw'
         gross: '6rem',
     },
 
