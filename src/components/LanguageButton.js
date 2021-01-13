@@ -1,5 +1,7 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
+import {Link} from 'gatsby';
+
 import { AppContext } from './AppContext'
 
 // CSS //
@@ -64,17 +66,23 @@ const ChangePanel = styled.div`
         left:30px;
         bottom: calc(-50% + 15px) ;
         
-        p{
-            font-size: 2.6rem;
-            margin: 0;
-            line-height: 50px;
-            text-align: center;
-        }
-
         &.active{
             display: block;
             opacity: 1;
             transform: translateY(0px);
+        }
+        button{
+            width: 100%;
+            height:100%;
+            background: none;
+        }
+
+        .changePanel__span{
+            display: block;
+            font-size: 2.6rem;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
         }
 
         @media(min-width:2100px){
@@ -96,13 +104,9 @@ const ChangePanel = styled.div`
 
 // COMPONENT //
 const LanguageButton = () => {
-    const initialLanguages = {
-        currentLanguage: "pl",
-        nextLanguage: "nl",
-    }
 
-    const [state, setState] = useState(initialLanguages)
-    const {language, contactInfo} = useContext(AppContext);
+    const {language,changeLanguageContext} = useContext(AppContext);
+    
 
 
     function handleClick(){
@@ -113,19 +117,40 @@ const LanguageButton = () => {
     };
 
     function changeLanguage(){
-
-        setState({
-            currentLanguage: state.nextLanguage,
-            nextLanguage: state.currentLanguage,
+        changeLanguageContext({
+            first: language.second,
+            second: language.first,
         })
 
+    }
+
+    function getLocation(){
+        if(typeof window !=="undefined"){
+            let pathname = window.location.pathname;
+            if(pathname.includes('/nl') || pathname.includes('/pl') ){
+                pathname = pathname.split('');
+                pathname.splice(0,3);
+                pathname = pathname.join('');
+            }
+
+            const link = language.second === 'pl' ? 
+            `${pathname}` :
+            `/${language.second}${pathname}`;
+            
+            return link;
+        }
+        
     }
 
     return(
         <>
         <StyledLanguageButton className="languageButton" onClick={handleClick}>
-            <p>{state.currentLanguage}</p> 
-            <ChangePanel className="changePanel" onClick={changeLanguage}><p>{state.nextLanguage}</p></ChangePanel>
+            <p>{language.first}</p> 
+            <ChangePanel className="changePanel">
+                <button onClick={changeLanguage}>
+                    <Link to={getLocation()} className="changePanel__span">{language.second}</Link>
+                </button>
+            </ChangePanel>
         </StyledLanguageButton>
         </>
     )

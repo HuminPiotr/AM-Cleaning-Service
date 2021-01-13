@@ -75,12 +75,13 @@ const Hamburger = () => {
  
 
   useEffect(() => {
-    const myHamburger = document.querySelector(".menu-btn")
+    // const myHamburger = document.querySelector(".menu-btn")
     const navigation = document.querySelector('.topBar');
 
+    console.log(myHamburger);
     
     navigation.classList.remove('active');
-    myHamburger.classList.remove("active")
+    myHamburger.current.classList.remove("active")
     
   })
 

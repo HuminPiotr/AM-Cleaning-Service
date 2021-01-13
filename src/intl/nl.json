@@ -12,14 +12,19 @@
     "lookingWork2": "Bekijk actuele vacatures!",
     "check": "Bekijken",
     "call": "Bel ons",
+    "phoneBaner": "Bent u op zoek naar snelle en specifieke informatie?",
 
     "actualAnnouncements": "Huidige aankondigingen",
     "date": "datum",
+    "facebookGroupBaner": "Word lid van onze groep met vacatures op Facebook!",
     "join": "Toetreden",
+    "contactFormWork": "Wil je ons team komen versterken? Schrijven!",
+
 
     "phoneNumber": "Telefoonnummer",
     "facebookGroup": "Groep baanaanbiedingen die Facebook schoonmaken",
     "message": "Bericht",
-    "send": "Sturen"
+    "send": "Sturen",
+    "contactFormContact": "Contact formulier"
   
 }

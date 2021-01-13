@@ -47,6 +47,14 @@ const GlobalStyle = createGlobalStyle`
         font-size: 52.5%;
     }
     }
+
+    @media (min-width: 2048px){
+        html{
+        font-size: 95%;
+
+        }
+    }
+
 `
 
 export default GlobalStyle;

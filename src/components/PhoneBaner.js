@@ -10,7 +10,9 @@ import { AppContext } from './AppContext';
 // CSS //
 const StyledPhoneBaner = styled.div`
     width: 100vw;
-    height: 258px;
+    height: 18vw;
+    min-height: 258px;
+
     color: white;
     display: flex;
     flex-direction: column;
@@ -55,7 +57,7 @@ const StyledPhoneBaner = styled.div`
 `
 
 // COMPONENT //
-const PhoneBaner = ({phoneNumber}) => {
+const PhoneBaner = () => {
     const data = useStaticQuery(query);
     const background = data.imageSharp.fluid.src;
     
@@ -68,16 +70,12 @@ const PhoneBaner = ({phoneNumber}) => {
     return(
         <StyledPhoneBaner background={background}>
             <div className="background"></div>
-            <h3>Szukasz szybkiej i konretnej informacji?</h3>
+            <h3>{intl.formatMessage({id: "phoneBaner"})}</h3>
             <h2>{intl.formatMessage({id: "call"})} <a href={hrefLink}> {phone}</a> </h2>
         </StyledPhoneBaner>
     )
 }
 
-// PROP-TYPES //
-PhoneBaner.propTypes = {
-    phoneNumber: PropTypes.string.isRequired,
-}
 
 export const query = graphql`
     {

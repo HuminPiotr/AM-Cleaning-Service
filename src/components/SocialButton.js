@@ -42,6 +42,14 @@ const StyledSocialButton = styled(Link)`
     :hover::before{
         transform: translateX(190%);
     }
+
+    @media (min-width: 2048px){
+        bottom: 70px;
+
+        p{
+            max-width: 115px;
+        }
+    }
 `
 
 //COMPONENT//

@@ -9,9 +9,13 @@ export const AppContext = createContext();
 
 const AppProvider = ({children}) => {
     const intl = useIntl();
-    const defaultLanguage = intl.locale !=="pl" ? "nl-NL" : intl.locale ;
-    console.log(defaultLanguage)
-    const [language, setLanguage] = useState(defaultLanguage);
+    const defaultLanguage = intl.locale !=="pl" ? "nl" : intl.locale ;
+    const secondLanguage = defaultLanguage === 'pl' ? 'nl' : 'pl';
+    const languagesObject = {
+        first: defaultLanguage,
+        second: secondLanguage,
+    }
+    const [language, setLanguage] = useState(languagesObject);
 
     const data = useStaticQuery(query);
     const contactInfo = {
@@ -21,13 +25,16 @@ const AppProvider = ({children}) => {
         facebookGroup: data.datoCmsDaneKontaktowe.facebookGroup
     }
 
-    const changeLanguage = (language) => setLanguage(language);
+     const changeLanguageContext = (languages) => {
+        setLanguage(languages);
+       
+    }
 
     return (
         <AppContext.Provider value={{
             contactInfo,
             language,
-            changeLanguage,
+            changeLanguageContext,
         }}>
             {children}
         </AppContext.Provider>

@@ -9,7 +9,7 @@ import background from '../assets/images/section5.jpg';
 const StyledWrapper = styled.section`
     width: 100vw;
     height: 100vh;
-    max-height: 844px;
+    max-height: 1080px;
     padding: 50px;
     display: flex;
     justify-content: flex-end;

@@ -38,8 +38,11 @@ const StyledScrollIcon = styled.div`
 
     @media (max-width:640px){
         left: 50%;
-
          transform: translateX(-50%);
+    }
+
+    @media (min-width: 2048px){
+        bottom: 85px;
     }
 `
 //COMPONENT//

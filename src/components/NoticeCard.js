@@ -61,7 +61,7 @@ const NoticeCard = ({cardObject, id}) => {
 
     const handleClick = (e) => {
         const emailContent = locale == 'pl' 
-            ? `Dzień dobry! \nJestem zainteresowany ogłoszeniem "${title}". \n...  
+            ? `Dzień dobry! \nJestem zainteresowany/a ogłoszeniem "${title}". \n...  
             `
             : `Hallo! \nIk ben geïnteresseerd in de aankondiging "${title}."
             \n...`

@@ -13,14 +13,18 @@
     "lookingWork2": "Sprawdź aktualne oferty pracy!",
     "check": "Sprawdź",
     "call": "Zadzwoń",
+    "phoneBaner": "Szukasz szybkiej i konretnej informacji?",
 
     "actualAnnouncements": "Aktualne ogłoszenia",
     "date": "data",
+    "facebookGroupBaner": "Dołącz do naszej grupy z ofertami pracy na facebooku!",
     "join": "dołącz",
+    "contactFormWork": "Chcesz dołączyć do naszego zespołu? Napisz!",
 
     "phoneNumber": "Numer telefonu",
     "facebookGroup": "Grupa oferty pracy sprzątanie Facebook",
     "message": "Wiadomość",
-    "send": "Wyślij"
+    "send": "Wyślij",
+    "contactFormContact": "Formularz kontaktowy"
 
 }

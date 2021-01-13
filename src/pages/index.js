@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
 import {useIntl} from 'gatsby-plugin-intl';
+import ReactHtmlParser from "react-html-parser"
 
 import Button from '../components/Button'
 import SocialButton from '../components/SocialButton'
@@ -56,6 +57,9 @@ const Hero = styled.section`
       bottom: 25%;
       @media(min-width: 641px) and (max-width: 1000px){
         right: 66%;
+      }
+      @media (min-width: 2048px){
+        right: 53%;
       }
     }
     #star2{
@@ -295,6 +299,7 @@ const SectionMap = styled.section`
 
   .woman{
     text-align: center;
+
     img{
       height: 100%;
       width: auto;
@@ -320,6 +325,11 @@ const SectionMap = styled.section`
     
   }
   }
+
+  @media (min-width: 2048px){
+    max-height:400px;
+  }
+
   @media (min-width: 641px) and (max-width: 1000px){
     .map{
       padding: 15px;
@@ -340,6 +350,7 @@ const SectionMap = styled.section`
     }
    
   }
+
 `
 
 const SectionWork = styled.section`
@@ -353,6 +364,9 @@ const SectionWork = styled.section`
   .text, .woman{
     width: 50%;
   }
+
+
+
 
   .text{
     text-align: center;
@@ -370,9 +384,22 @@ const SectionWork = styled.section`
     }
   }
 
+
+  @media (min-width: 2048px){
+   max-height:400px;
+  }
   @media (min-width: 641px) and (max-width: 1000px){
     .woman{
       width: 50%;
+      align-self: flex-end;
+    }
+
+  }
+
+  @media (min-width: 2048px){
+    .woman{
+    align-self: flex-end;
+
     }
   }
 
@@ -398,7 +425,27 @@ const SectionWork = styled.section`
 const IndexPage = ({data}) => {
   const intl = useIntl();
   const language = intl.locale;
+
+  // PAGE CONTENT
   
+//  const heroText =  data.allDatoCmsIndex.nodes.filter((item) => item.heroNode.locale.includes('nl') );
+function getTextContentPage(data){
+
+  for(const item of data){
+    
+    if(item.locale.includes(language)){
+      console.log(item.value);
+      return item.value;
+    }
+  
+  } 
+}
+console.log(data.textContent.nodes[0].hero)
+
+const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item) =>(
+  <li>{item.name}</li>
+));
+
     return(
     <>
     {/* <SEO title="Home" /> */}
@@ -411,9 +458,10 @@ const IndexPage = ({data}) => {
       </div>
 
       <div className="hero__text">
-        <h1>Profesjonalne <span>sprzątanie</span> dla 
-            Ciebie i Twojej firmy!
+        <h1>
+          {ReactHtmlParser(getTextContentPage(data.textContent.nodes[0].hero)) }
         </h1>
+
         <Button link="#hiperForm"> 
           {intl.formatMessage({id: "heroButton"})}
         </Button>
@@ -429,10 +477,11 @@ const IndexPage = ({data}) => {
       
       <Description background={data.backgroundDescription.fluid.src} >
           <div className="text" >
-              <p className="text__first">Podstawą sukcesu każdej firmy  są odpowiednio wykwalifikowani i zmotywowani pracownicy. 
-              Personel sprzątający nie jest tu wyjątkiem. Od tego, jakie osoby zatrudniam w  firmie do wykonania usługi czystości, zależą jej kontrakty, relacje z klientami i wizerunek.</p>
+              <p className="text__first">
+                {getTextContentPage(data.textContent.nodes[0].description1)}
+              </p>
               <br></br>
-              <p className="text__second">Profesjonalna firma sprzątająca niczym perfekcyjna pani domu ma jasno wyznaczone standardy, których w codziennej pracy muszą przestrzegać jej pracownicy. Efekt wykonanej pracy jest  widoczny na pierwszy rzut oka.</p>
+              <p className="text__second">{getTextContentPage(data.textContent.nodes[0].description2)}</p>
           </div>
       </Description>
 
@@ -441,15 +490,10 @@ const IndexPage = ({data}) => {
           <h2>{intl.formatMessage({id: "offer"})}</h2>
           <div className="text">
             <h3>{intl.formatMessage({id: "cleaning"})}:</h3>
-            <ul >
-              <li>pokoi hotelowych</li>
-              <li>sal konferencyjnych oraz recepcji</li>
-              <li>domów i apartamentów</li>
-              <li>hal produkcyjnych</li>
-              <li>szkół</li>
-              <li>przedszkoli</li>
-              <li>apartamentów wakacyjnych</li>
-              <li>po remontach</li>
+            <ul>
+              {
+                offerList
+              }
             </ul>
           </div>
 
@@ -460,8 +504,10 @@ const IndexPage = ({data}) => {
           <Image fixed={data.woman.fixed} />
         </div>
         <div className="map">
+          <h2>
+            {getTextContentPage(data.textContent.nodes[0].map)}
+          </h2>
 
-          <h2>Nasze usługi sprzątające oferujemy na terenie całej Holandii!</h2>
         </div>
       </SectionMap>
 
@@ -478,9 +524,9 @@ const IndexPage = ({data}) => {
       </SectionWork>
      
 
-        <ContactForm  title="Napisz nam jakiego rodzaju usługi potrzebujesz!" />
+        <ContactForm  title={getTextContentPage(data.textContent.nodes[0].contact_form)} />
 
-        <PhoneBaner phoneNumber="123 123 123"/>
+        <PhoneBaner/>
       </>
       
     )
@@ -490,7 +536,7 @@ const IndexPage = ({data}) => {
 
 export const query = graphql`
 {
-  
+    
       backgroundHero: imageSharp(original: 
         {src: {regex: "/hero/"}}) {
           fluid(quality: 100)  {
@@ -528,7 +574,41 @@ export const query = graphql`
               }
 
 
-    
+              textContent:allDatoCmsIndex {
+                nodes {
+                 hero: _allHeroLocales {
+                    locale
+                    value
+                  }
+                  description1: _allDescription1Locales {
+                    locale
+                    value
+                  }
+                  description2: _allDescription2Locales {
+                    locale
+                    value
+                  }
+                  offer: _allListaOfertyLocales {
+                    locale
+                    value {
+                      name
+                    }
+                  }
+
+                  map: _allMapLocales {
+                    locale
+                    value
+                  }
+
+                  contact_form: _allContactFormLocales {
+                    locale
+                    value
+                  }
+
+                }
+              }
+
+
 
 }
 `

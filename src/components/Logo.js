@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Link, graphql, useStaticQuery} from 'gatsby'
 import Image from 'gatsby-image'
 
+import {useIntl} from 'gatsby-plugin-intl';
 
 const LogoWrapper = styled.div`
 min-width: 20vw;
@@ -24,10 +25,12 @@ transition:.3s;
 
 const Logo = () => {
     const data = useStaticQuery(query);
+    const intl = useIntl();
+    const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
 
     return (
     <LogoWrapper className="logo">
-      <Link to="/">
+      <Link to={`${locale}/`}>
       <Image fluid={data.imageSharp.fluid} />
       </Link>
     </LogoWrapper>

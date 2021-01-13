@@ -163,8 +163,8 @@ const WorkPage = ({data}) => {
 
     const {language, contactInfo: {facebookGroup}} = useContext(AppContext);
 
-    const filtredNoticeCardList = data.allDatoCmsOgloszenie.nodes.filter((item) => item.locale === language);
-
+    const filtredNoticeCardList = data.allDatoCmsOgloszenie.nodes.filter((item) => item.locale.includes(language.first));
+    
     const noticeCardList = filtredNoticeCardList.map( (item, index) => 
     <NoticeCard id={item.id} cardObject={{title: item.title, date: item.date, text: item.content}} key={item.id}/>
     );
@@ -204,15 +204,15 @@ const WorkPage = ({data}) => {
                 <div className="facebookSection__content">
                     <img src={iconFb} className="facebookSection__icon" alt="facebook-icon"/>
                     <div className="facebookSection__content-text">
-                        <h2>Dołącz do naszej grupy z ofertami pracy na facebooku!</h2>
+                        <h2>{intl.formatMessage({id: "facebookGroupBaner"})}</h2>
                         <Button link={facebookGroup} target="_blank">{intl.formatMessage({id: "join"})}</Button>
                     </div>
                 </div>
             </section>
 
             
-                <ContactForm  title="Chcesz dołączyć do naszego zespołu? Napisz!" />
-                <PhoneBaner phoneNumber="123 123 123"/>
+                <ContactForm  title={intl.formatMessage({id: "contactFormWork"})} />
+                <PhoneBaner />
             
 
         </StyledWrapper>

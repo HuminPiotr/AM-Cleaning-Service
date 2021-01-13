@@ -140,7 +140,7 @@ const ContactPage = () => {
         </div>
 
     </InfoSection>
-    <ContactForm title="Formularz kontaktowy"></ContactForm>
+    <ContactForm title={intl.formatMessage({id: "contactFormContact"})}></ContactForm>
     </StyledWrapper>
 
 )

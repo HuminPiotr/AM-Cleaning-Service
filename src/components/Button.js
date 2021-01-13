@@ -50,7 +50,8 @@ const StyledButton = styled.button`
 
  @media(min-width: 2600px){
     font-size: ${(props) => props.theme.fontSize.big};
-    padding: 50px;
+    padding: 25px;
+    /* padding: 50px; */
  }
 `
 
