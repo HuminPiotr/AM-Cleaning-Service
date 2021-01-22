@@ -152,7 +152,7 @@ const intl = useIntl();
 return(
     <StyledWrapper className="contactFormSection">
         <StyledContantForm >
-            <form name="contact" method="POST" data-netlify="true">
+            <form name="contact" action="POST" data-netlify="true">
                 <legend >{title}</legend>
                 <div className="field">
                     <label for="email">Email</label>
