@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import {Link} from 'gatsby';
 
@@ -46,7 +46,7 @@ const StyledLanguageButton = styled.button`
     @media (max-width: 640px){
         position: absolute;
         top: 15px;
-        left: 5px;
+        left: 0px;
         z-index: 2;
     }
 `

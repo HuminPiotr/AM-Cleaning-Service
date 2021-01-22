@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import {useIntl} from 'gatsby-plugin-intl';
 
-import envelopeIcon from '../assets/images/envelope.svg';
 
 
 // CSS //
@@ -60,7 +59,7 @@ const NoticeCard = ({cardObject, id}) => {
     
 
     const handleClick = (e) => {
-        const emailContent = locale == 'pl' 
+        const emailContent = locale === 'pl' 
             ? `Dzień dobry! \nJestem zainteresowany/a ogłoszeniem "${title}". \n...  
             `
             : `Hallo! \nIk ben geïnteresseerd in de aankondiging "${title}."

@@ -1,8 +1,6 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import {graphql, useStaticQuery} from 'gatsby'
-import Image from 'gatsby-image'
 
 import {useIntl} from 'gatsby-plugin-intl';
 import { AppContext } from './AppContext';

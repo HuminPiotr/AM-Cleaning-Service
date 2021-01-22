@@ -1,5 +1,4 @@
 import React from "react"
-import { Link} from "gatsby"
 import styled from 'styled-components';
 
 
@@ -19,6 +18,7 @@ import star3  from '../assets/images/star3.png'
 import map from '../assets/images/section4-map.svg'
 import ContactForm from "../components/ContactForm";
 import PhoneBaner from '../components/PhoneBaner'
+
 
 
 
@@ -116,7 +116,7 @@ const Hero = styled.section`
 
       @media (max-width: 640px){
         padding-left: 50px;
-
+        
 
       }
     }
@@ -143,6 +143,7 @@ const Hero = styled.section`
     }
 
     @media(max-width: 640px){
+      top: 90px;
       .star{
         display: none;
       }
@@ -154,6 +155,7 @@ const Hero = styled.section`
           justify-content: center;
           flex-grow: 0;
           align-items: center;
+          
 
           h1{
             font-size: 40px;

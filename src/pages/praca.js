@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import styled from 'styled-components'
 
 import NoticeCard from '../components/NoticeCard'
@@ -107,11 +107,13 @@ const StyledWrapper = styled.div`
     }
 
     @media (max-width: 640px){
+
         .star{
             display: none;
         }
         h1{
             margin: 0;
+            margin-top: 90px;
         }
         .noticeBoard{
             

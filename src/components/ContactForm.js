@@ -147,7 +147,7 @@ const StyledButton = styled.div`
 
 const ContactForm = ({title}) => { 
 const intl = useIntl();
-const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+// const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
 
 return(
     <StyledWrapper className="contactFormSection">

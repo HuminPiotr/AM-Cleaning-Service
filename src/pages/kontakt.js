@@ -20,6 +20,9 @@ h1{
     text-align: center;
     font-size: ${({theme}) => theme.fontSize.gross};
 }
+@media (max-width: 640px){
+    margin-top: 90px;
+}
 `
 
 const InfoSection = styled.section`
@@ -105,7 +108,7 @@ const InfoSection = styled.section`
 // COMPONENT //
 const ContactPage = () => {
     const intl = useIntl();
-    const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+    // const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
 
     const {contactInfo: {phone, email, facebook, facebookGroup}} = useContext(AppContext);
 
@@ -113,24 +116,24 @@ const ContactPage = () => {
     return(
     <StyledWrapper>
     <SEO title={title} />
-    <h1>Kontakt</h1>
+    <h1>{intl.formatMessage({id: "contact"})}</h1>
     <InfoSection className="info">
         <div className="info__phone contactDiv">
-            <img src={phoneIcon} className="icon"/>
+            <img src={phoneIcon} className="icon" alt="phone-icon"/>
             <div className="text">
                 <p>{intl.formatMessage({id: "phoneNumber"})}</p>
                 <strong><a href={`tel: ${phone}`}>{phone}</a></strong>
             </div>
         </div>
         <div className="info__email contactDiv">
-            <img src={emailIcon} className="icon"/>
+            <img src={emailIcon} className="icon" alt="email-icon"/>
             <div className="text">
                 <p>Email:</p>
                 <strong><a href={`mailto: ${email}`}>{email}</a></strong>
             </div>
         </div>
         <div className="info__facebook contactDiv">
-            <img src={facebookIcon} className="icon"/>
+            <img src={facebookIcon} className="icon" alt="facebook-icon"/>
             <div className="text">
                 <p>Facebook:</p>
                <strong><a href={facebook} target="_blank" > facebook.com/AMKocon</a></strong>

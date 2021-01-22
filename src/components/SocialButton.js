@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import {Link} from 'gatsby';
-import Image from 'gatsby-image';
 
 import {useIntl} from 'gatsby-plugin-intl';
 
@@ -55,7 +54,7 @@ const StyledSocialButton = styled(Link)`
 //COMPONENT//
 const SocialButton = ({link}) => {
     const intl = useIntl();
-    const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+    // const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
 
     return(
     <StyledSocialButton to={link} target="_blank">

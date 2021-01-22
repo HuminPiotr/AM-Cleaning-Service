@@ -31,9 +31,6 @@ const StyledCurtian = styled.div`
 
 // COMPONENT //
 class Curtian extends Component {
-constructor(props){
-    super(props);
-}
 
 componentDidMount() {
     const curtain = document.querySelector('.curtain');

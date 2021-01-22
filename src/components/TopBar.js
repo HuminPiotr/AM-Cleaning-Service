@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Logo from '../components/Logo';
 import Navigation from '../components/Navigation'
 import LanguageButton from '../components/LanguageButton'
-import Hamburger from './Hamburger';
+import MenuHamburger from './MenuHamburger';
+
 
 const StyledTopBar = styled.header`
     width: 100vw;
@@ -74,8 +75,8 @@ const StyledTopBar = styled.header`
     }
 
     @media (max-width: 640px){
-
-
+        position: fixed;
+        top: 0px;
         width:100%;
         height:90px !important;
         z-index: 2;
@@ -84,20 +85,6 @@ const StyledTopBar = styled.header`
        align-items: center;
 
        
-       &.active{
-           position: sticky;
-           top: 0;
-           width: 100vw;
-           height: 100vh !important;
-           background-color: ${({theme}) => theme.color.gray};
-           overflow: hidden;
-
-           nav{
-               display: block;
-           }
-       }
- 
-
 
         .navSection{
             flex-direction: column;
@@ -119,11 +106,6 @@ const StyledTopBar = styled.header`
             flex-grow: 0;
         }
 
-        &.sticky{
-            width: 100vw;
-
-
-    }
     }
 `
 
@@ -135,21 +117,25 @@ let lastYOffset = 0;
 
 
 
+
 const handleScroll = () =>{
+
     const scrollTop = window.pageYOffset;
     let scrollDirection = "down";
 
     const topBar = document.querySelector('.topBar');
-    const navigationIsActive = topBar.classList.contains('active');
-
+    const navigationIsActive = topBar.classList.contains('sticky');
 
     lastYOffset > scrollTop
      ? scrollDirection = "up"
      : scrollDirection = "down"; 
 
-    if(window.scrollY > 50 && scrollDirection==="up" && !navigationIsActive)
-        
-            setIsSticky(true);
+
+
+    // isSticky?
+    if(window.scrollY > 50 && scrollDirection==="up" && !navigationIsActive){
+        setIsSticky(true);
+    }
         
     else{
         if(!navigationIsActive){
@@ -157,7 +143,12 @@ const handleScroll = () =>{
         }
     }
 
+
+
+
     lastYOffset = scrollTop <= 0 ? 0 : scrollTop;
+
+
 }
 
 useEffect(() => {
@@ -169,18 +160,21 @@ useEffect(() => {
 },[])
 
 
+
+
 return(
     <StyledTopBar className={isSticky ? 'topBar sticky ' : 'topBar '}>
 
         <Logo />
         <section className="navSection">
-            <Navigation />
+            <Navigation  />
             <LanguageButton />
-            <Hamburger />
+            <MenuHamburger/>
         </section>
 
     </StyledTopBar>
 )
 }
+
 
 export default TopBar;

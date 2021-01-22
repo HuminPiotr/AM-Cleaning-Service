@@ -67,6 +67,10 @@ const StyledNavigation = styled.nav`
         height: 100vh;
         background: ${({theme}) => theme.color.gray};
 
+        &.active{
+            display: flex;
+            top: 0;
+        }
         ul{
             flex-direction: column;
             align-items: center;
@@ -96,7 +100,7 @@ const intl = useIntl();
 const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
 
 return(
-    <StyledNavigation>
+    <StyledNavigation className="navigation">
         <ul>
             <li><Link activeClassName="active" to={`${locale}/`}>{intl.formatMessage({id: "home"})}</Link></li>
             <li><Link activeClassName="active" to={`${locale}/praca`}>{intl.formatMessage({id: "work"})}</Link></li>
