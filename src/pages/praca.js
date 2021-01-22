@@ -165,7 +165,9 @@ const WorkPage = ({data}) => {
 
     const {language, contactInfo: {facebookGroup}} = useContext(AppContext);
 
-    const filtredNoticeCardList = data.allDatoCmsOgloszenie.nodes.filter((item) => item.locale.includes(language.first));
+    const filtredNoticeCardList = data.allDatoCmsOgloszenie.nodes.filter((item) => item.locale.includes(language.first) && !item.archive);
+
+    
     
     const noticeCardList = filtredNoticeCardList.map( (item, index) => 
     <NoticeCard id={item.id} cardObject={{title: item.title, date: item.date, text: item.content}} key={item.id}/>
@@ -236,6 +238,7 @@ export const query = graphql`
         content
         id
         locale
+        archive
       }
     }
   }

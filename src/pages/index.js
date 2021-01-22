@@ -277,11 +277,13 @@ const Offer = styled.section`
     align-content: flex-start;
     background-image: none;
     height: auto;
+    padding: 10px;
     padding-bottom: 50px;
+    
 
 
     h2{
-      margin-bottom: 50px;
+      margin-bottom: 25px;
     }
   }
 `

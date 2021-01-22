@@ -163,11 +163,16 @@ return(
                     <label for="mesage">{intl.formatMessage({id: "message"})}</label>
                     <textarea name="mesage" id="mesage" required wrap="hard"  />
                 </div>
+
+                <div className="field">
+                    <div data-netlify-recaptcha="true"></div>
+                </div>
                 
                 <StyledButton className="button">
                     <div className="hoverEffect"></div>
-                    <input type="submit" id="submit" value={intl.formatMessage({id: "send"})}></input>
+                    <input type="submit" id="submit" name="submit" value={intl.formatMessage({id: "send"})}></input>
                 </StyledButton>
+
             </form>
         </StyledContantForm>
     </StyledWrapper>
