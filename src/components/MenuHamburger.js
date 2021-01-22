@@ -55,7 +55,7 @@ const StyledHamburger = styled.div`
 
 
     @media (max-width: 640px) {
-    display: flex;
+    /* display: flex; */
   }
 `
 
@@ -65,12 +65,11 @@ const MenuHamburger = () => {
 
     useEffect(() => {
         const navigation = document.querySelector('.navigation');
-        const topBar = document.querySelector('.topBar');
         const menuButton = document.querySelector('.menu-btn');
 
         menuButton.classList.remove('active');
         navigation.classList.remove('active');
-        topBar.classList.remove('sticky');
+   
 
     } )
 

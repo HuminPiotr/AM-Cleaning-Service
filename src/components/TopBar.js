@@ -26,12 +26,10 @@ const StyledTopBar = styled.header`
     }
 
     &.sticky{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         background: white;
-
-        position: fixed;
         z-index: 2;
         transition: .3s;
         animation: showTopBar .5s ease-in;
@@ -52,6 +50,7 @@ const StyledTopBar = styled.header`
             transition: .3s;
             }
         }
+
         @keyframes showTopBar{
             from{
                 /* opacity: 0; */
@@ -105,15 +104,24 @@ const StyledTopBar = styled.header`
             order:1;
             flex-grow: 0;
         }
-
+        .menu-btn{
+            display: flex;
+        }
     }
 `
+let isMobile;
+if(typeof window !== 'undefined'){
 
+    isMobile = window.innerWidth <= 640;
+}
 
-const TopBar = (props) => {
+const TopBar = () => {
 
 const [isSticky, setIsSticky] = useState(false);
 let lastYOffset = 0;
+
+
+
 
 
 
@@ -131,17 +139,21 @@ const handleScroll = () =>{
      : scrollDirection = "down"; 
 
 
-
-    // isSticky?
+    //isMobile?
+    if(!isMobile){
+            // isSticky?
     if(window.scrollY > 50 && scrollDirection==="up" && !navigationIsActive){
         setIsSticky(true);
     }
         
-    else{
-        if(!navigationIsActive){
-            setIsSticky(false);
-        }
+    
+    else if(window.scrollY === 0 || scrollDirection === "down"){
+        setIsSticky(false);
     }
+    }
+
+
+    
 
 
 
@@ -169,7 +181,7 @@ return(
         <section className="navSection">
             <Navigation  />
             <LanguageButton />
-            <MenuHamburger/>
+            {<MenuHamburger/>}
         </section>
 
     </StyledTopBar>

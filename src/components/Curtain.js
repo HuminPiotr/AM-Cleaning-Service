@@ -27,6 +27,10 @@ const StyledCurtian = styled.div`
             opacity: 0;
         }
     }
+
+    @media(max-width: 640px){
+        display: none;
+    }
 `
 
 // COMPONENT //
