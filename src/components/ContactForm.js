@@ -167,11 +167,14 @@ return(
                 <div className="field">
                     <div data-netlify-recaptcha="true"></div>
                 </div>
-                
+{/*                 
                 <StyledButton type="submit" className="button">
                     <div className="hoverEffect"></div>
                     <input type="submit" id="submit" name="submit" value={intl.formatMessage({id: "send"})}></input>
-                </StyledButton>
+                </StyledButton> */}
+                  <p>
+                    <button type="submit">Wyślij</button>
+                 </p>
 
             </form>
         </StyledContantForm>
