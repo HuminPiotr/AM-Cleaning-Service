@@ -168,7 +168,7 @@ return(
                     <div data-netlify-recaptcha="true"></div>
                 </div>
                 
-                <StyledButton className="button">
+                <StyledButton type="submit" className="button">
                     <div className="hoverEffect"></div>
                     <input type="submit" id="submit" name="submit" value={intl.formatMessage({id: "send"})}></input>
                 </StyledButton>
