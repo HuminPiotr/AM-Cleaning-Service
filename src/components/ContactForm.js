@@ -68,7 +68,8 @@ const StyledContantForm = styled.div`
     }
     #message{
         min-width: 80%;
-        min-height: 45vh;
+        /* min-height: 45vh; */
+        min-height: 300px;
         resize: none;
         font-style: oblique;
         font-size: ${({theme}) => theme.fontSize.regular};
