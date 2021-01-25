@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -147,21 +147,67 @@ const StyledButton = styled.div`
 
 const ContactForm = ({title}) => { 
 const intl = useIntl();
-// const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+
+const [formState, setFormState] = useState({
+    email: "",
+    message: "",
+})
+
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join('&');
+}
+
+const handleChange = e => {
+    setFormState({
+        ...formState,
+        [e.target.name]: e.target.value,
+    })
+}
+
+const handleSubmit = e => {
+    fetch('/', {
+        method: 'POST',
+        headers: {"Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...formState})
+    })
+        .then(() => alert('Success!'))
+        .catch(error => alert(error));
+
+    e.preventDefault();
+}
 
 return(
     <StyledWrapper className="contactFormSection">
         <StyledContantForm >
-            <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact" method="post" data-netlify="true"  data-netlify-honeypot="bot-field" onSubmit={handleSubmit} >
+
+                <input type="hidden" name="form-name" value="contact" />
+
                 <legend >{title}</legend>
                 <div className="field">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required />
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        value={formState.email} 
+                        onChange={handleChange} 
+                        required 
+                    />
                 </div>
 
                 <div className="field">
                     <label for="mesage">{intl.formatMessage({id: "message"})}</label>
-                    <textarea name="mesage" id="mesage" required wrap="hard"  />
+                    <textarea 
+                        name="message" 
+                        id="mesage" 
+                        required
+                        wrap="hard" 
+                        value={formState.message}
+                        onChange={handleChange}  
+                    />
                 </div>
 
                 <div className="field">
