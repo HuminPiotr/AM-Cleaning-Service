@@ -9,6 +9,7 @@ import background from '../assets/images/section5.jpg';
 const StyledWrapper = styled.section`
     width: 100vw;
     height: 100vh;
+    min-height: 500px;
     max-height: 1080px;
     padding: 50px;
     display: flex;
@@ -25,6 +26,7 @@ const StyledWrapper = styled.section`
 `
 const StyledContantForm = styled.div`
     width: 60vw;
+  
 
     legend{
         margin-bottom: 25px;
