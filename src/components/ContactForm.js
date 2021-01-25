@@ -47,7 +47,7 @@ const StyledContantForm = styled.div`
         flex-direction: column;
     }
 
-    #email,#mesage{
+    #email,#message{
         
         font-family: "Lato";
         border-radius: 9px;
@@ -66,7 +66,7 @@ const StyledContantForm = styled.div`
         width: 50%;
         height: 63px;
     }
-    #mesage{
+    #message{
         min-width: 80%;
         min-height: 45vh;
         resize: none;
@@ -161,9 +161,10 @@ const encode = (data) => {
 
 const handleChange = e => {
     setFormState({
-        ...formState,
+        
         [e.target.name]: e.target.value,
     })
+
 }
 
 const handleSubmit = e => {
@@ -202,11 +203,11 @@ return(
                     <label for="mesage">{intl.formatMessage({id: "message"})}</label>
                     <textarea 
                         name="message" 
-                        id="mesage" 
+                        id="message" 
                         required
                         wrap="hard" 
                         value={formState.message}
-                        onChange={handleChange}  
+                        oninvalid={handleChange}  
                     />
                 </div>
 

@@ -59,22 +59,21 @@ const NoticeCard = ({cardObject, id}) => {
     
 
     const handleClick = (e) => {
+
         const emailContent = locale === 'pl' 
             ? `Dzień dobry! \nJestem zainteresowany/a ogłoszeniem "${title}". \n...  
             `
             : `Hallo! \nIk ben geïnteresseerd in de aankondiging "${title}."
             \n...`
             
-        const textArea = document.querySelector('#mesage');
+        const textArea = document.querySelector('#message');
         const contactFormSection = document.querySelector('.contactFormSection');
         textArea.value = emailContent;
+  
+        console.log(textArea)
         contactFormSection.scrollIntoView({behavior:"smooth"});
-        // startAnimation(e.target);
-    }
 
-    // const startAnimation = (target) => {
-    //     console.log(target);
-    // }
+    }
 
 
     return(
