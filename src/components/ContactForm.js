@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -153,6 +153,8 @@ const [formState, setFormState] = useState({
     message: "",
 })
 
+
+
 const encode = (data) => {
     return Object.keys(data)
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -161,10 +163,13 @@ const encode = (data) => {
 
 const handleChange = e => {
     setFormState({
-        
+        ...formState,
         [e.target.name]: e.target.value,
+        "email": document.querySelector('#email').value,
+        "message": document.querySelector('#message').value,
     })
 
+    console.log(e.target.value);
 }
 
 const handleSubmit = e => {
@@ -180,7 +185,7 @@ const handleSubmit = e => {
 }
 
 return(
-    <StyledWrapper className="contactFormSection">
+    <StyledWrapper className="contactFormSection" setState={setFormState}>
         <StyledContantForm >
             <form name="contact" method="post" data-netlify="true"  data-netlify-honeypot="bot-field" onSubmit={handleSubmit} >
 
@@ -207,11 +212,11 @@ return(
                         required
                         wrap="hard" 
                         value={formState.message}
-                        oninvalid={handleChange}  
+                        onChange={handleChange}  
                     />
                 </div>
 
-                <div className="field">
+                <div>
                     <div data-netlify-recaptcha="true"></div>
                 </div>
                 
