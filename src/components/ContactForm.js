@@ -9,7 +9,7 @@ import background from '../assets/images/section5.jpg';
 const StyledWrapper = styled.section`
     width: 100vw;
     height: 100vh;
-    min-height: 500px;
+    min-height: 700px;
     max-height: 1080px;
     padding: 50px;
     display: flex;
@@ -70,8 +70,8 @@ const StyledContantForm = styled.div`
     }
     #message{
         min-width: 80%;
-        /* min-height: 45vh; */
-        min-height: 300px;
+        min-height: 50vh;
+        /* min-height: 50%; */
         resize: none;
         font-style: oblique;
         font-size: ${({theme}) => theme.fontSize.regular};
