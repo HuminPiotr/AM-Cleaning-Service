@@ -172,7 +172,7 @@ const handleSubmit = e => {
         headers: {"Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "contact", ...formState})
     })
-        .then(() => alert('Success!'))
+        .then(() => alert(intl.formatMessage({id: "succes"})))
         .catch(error => alert(error));
 
     e.preventDefault();
