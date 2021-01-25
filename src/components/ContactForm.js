@@ -219,9 +219,8 @@ return(
                     />
                 </div>
 
-                <div>
-                    <div data-netlify-recaptcha="true"></div>
-                </div>
+                <div data-netlify-recaptcha="true"></div>
+             
                 
                 <StyledButton type="submit" className="button">
                     <div className="hoverEffect"></div>
