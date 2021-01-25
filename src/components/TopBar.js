@@ -9,6 +9,7 @@ import MenuHamburger from './MenuHamburger';
 
 const StyledTopBar = styled.header`
     width: 100vw;
+    height: 20vh;
     /* min-height: 150px; */
     padding: 0 25px;
     display: flex;
@@ -33,6 +34,7 @@ const StyledTopBar = styled.header`
         z-index: 2;
         transition: .3s;
         animation: showTopBar .5s ease-in;
+        height: 100px;
 
         .logo{
             

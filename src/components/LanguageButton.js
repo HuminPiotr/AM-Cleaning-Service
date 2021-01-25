@@ -86,9 +86,9 @@ const ChangePanel = styled.div`
         }
 
         @media(min-width:2100px){
-            width:100px;
-            height:100px;
-            left:0;
+            width:80px;
+            height:80px;
+            left:10px;
             p{
                 font-size: ${({theme}) => theme.fontSize.big};
                 line-height: ${({theme}) => theme.fontSize.big};

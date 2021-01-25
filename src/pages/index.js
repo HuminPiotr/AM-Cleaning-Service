@@ -27,7 +27,7 @@ import PhoneBaner from '../components/PhoneBaner'
 // CSS //
 const Hero = styled.section`
   position: relative;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 20vh);
   width: 100%;
   
   background-image: url(${(props) => props.background });
@@ -58,6 +58,9 @@ const Hero = styled.section`
       @media(min-width: 641px) and (max-width: 1000px){
         right: 66%;
       }
+      @media (min-width: 1001px){
+        right: 68%;
+      }
       @media (min-width: 2048px){
         right: 53%;
       }
@@ -69,6 +72,9 @@ const Hero = styled.section`
       animation-delay: .4s;
       @media(min-width: 641px) and (max-width: 1000px){
         left: 5%;
+      }
+      @media (min-width: 1001px){
+        right: 45%;
       }
     }
     
@@ -85,7 +91,7 @@ const Hero = styled.section`
     }
 
   .hero__text{
-    height: calc(100vh - 150px);
+    height: calc(100vh - 20vh);
       position: absolute;
       max-width: 50%;
       top:0;
@@ -102,10 +108,11 @@ const Hero = styled.section`
       span{
         color: ${({theme}) => theme.color.blue};
       }
+
+
       
-      @media (min-width:2100px){
-        height:auto;
-      }
+
+
 
       @media(min-width: 641px) and (max-width: 1000px){
         h1{
@@ -183,6 +190,7 @@ const Hero = styled.section`
     }
     }
 
+
     
 `
 
@@ -192,7 +200,7 @@ const Description = styled.section`
   justify-content: flex-end;
   width:100vw;
   height: 100vh;
-  margin-top: -13vh;
+  /* margin-top: -13vh; */
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -213,6 +221,11 @@ const Description = styled.section`
       font-weight: bold;
     }
   }
+  @media (min-width: 2000px){
+    .text{
+      font-size: ${({theme}) => theme.fontSize.veryBig};
+    }
+  }
 
   @media(min-width: 641px) and (max-width: 1000px){
     background-position-x: -150px;
@@ -230,8 +243,10 @@ const Description = styled.section`
       width: 100%;
       padding: 15px;
       margin:0;
+      
     }
   }
+
   
 `
 
@@ -438,13 +453,12 @@ function getTextContentPage(data){
   for(const item of data){
     
     if(item.locale.includes(language)){
-      console.log(item.value);
       return item.value;
     }
   
   } 
 }
-console.log(data.textContent.nodes[0].hero)
+
 
 const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item) =>(
   <li>{item.name}</li>

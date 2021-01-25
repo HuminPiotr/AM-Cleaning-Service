@@ -49,6 +49,14 @@ const StyledSocialButton = styled(Link)`
             max-width: 115px;
         }
     }
+
+    @media (min-width: 3072px){
+
+        p{
+            max-width: 205px;
+        }
+    }
+
 `
 
 //COMPONENT//

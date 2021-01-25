@@ -55,6 +55,13 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    @media (min-width: 3072px){
+        html{
+        font-size: 125%;
+
+        }
+    }
+
 
 `
 

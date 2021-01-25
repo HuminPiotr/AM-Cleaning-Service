@@ -23,6 +23,10 @@ const StyledWrapper = styled.section`
         background-image: none;
         background-color: white;
     }
+
+    @media (min-width: 3072px){
+        max-height: 2048px;
+    }
 `
 const StyledContantForm = styled.div`
     width: 60vw;
