@@ -152,7 +152,7 @@ const intl = useIntl();
 return(
     <StyledWrapper className="contactFormSection">
         <StyledContantForm >
-            <form name="contact" action="POST" data-netlify="true">
+            <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
                 <legend >{title}</legend>
                 <div className="field">
                     <label for="email">Email</label>
@@ -167,14 +167,11 @@ return(
                 <div className="field">
                     <div data-netlify-recaptcha="true"></div>
                 </div>
-{/*                 
+                
                 <StyledButton type="submit" className="button">
                     <div className="hoverEffect"></div>
                     <input type="submit" id="submit" name="submit" value={intl.formatMessage({id: "send"})}></input>
-                </StyledButton> */}
-                  <p>
-                    <button type="submit">Wyślij</button>
-                 </p>
+                </StyledButton>
 
             </form>
         </StyledContantForm>
