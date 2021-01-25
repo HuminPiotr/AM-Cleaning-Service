@@ -164,7 +164,7 @@ const encode = (data) => {
 const handleChange = e => {
     setFormState({
         ...formState,
-        [e.target.name]: e.target.value,
+        // [e.target.name]: e.target.value,
         "email": document.querySelector('#email').value,
         "message": document.querySelector('#message').value,
     })
