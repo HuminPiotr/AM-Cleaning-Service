@@ -10,7 +10,6 @@ import emailIcon from '../assets/images/email.svg'
 import facebookIcon from '../assets/images/roundedFacebookIcon.svg'
 import { AppContext } from "../components/AppContext";
 
-const title = "Kontakt";
 
 
 // CSS //
@@ -115,7 +114,7 @@ const ContactPage = () => {
 
     return(
     <StyledWrapper>
-    <SEO title={title} />
+    <SEO title={intl.formatMessage({id: "contact"})} />
     <h1>{intl.formatMessage({id: "contact"})}</h1>
     <InfoSection className="info">
         <div className="info__phone contactDiv">

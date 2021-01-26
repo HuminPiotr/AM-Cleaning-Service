@@ -17,7 +17,6 @@ import star2  from '../assets/images/star2.png'
 import star3  from '../assets/images/star3.png'
 import { AppContext } from "../components/AppContext";
 
-const title = "Praca"
 
 const StyledWrapper = styled.div`
     h1{
@@ -178,7 +177,7 @@ const WorkPage = ({data}) => {
 
     return(
         <StyledWrapper>
-        <SEO title={title} />
+        <SEO title={intl.formatMessage({id: "work"})} />
             <h1>{intl.formatMessage({id: "actualAnnouncements"})}</h1>
             <div className="noticeBoard">
                 {noticeCardList.length <= 0 ? <p className="noticeBoard__info">W tej chwili nie mamy żadnych nowych ogłoszeń. </p>: noticeCardList}

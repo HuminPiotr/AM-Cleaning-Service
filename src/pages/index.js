@@ -11,6 +11,7 @@ import Button from '../components/Button'
 import SocialButton from '../components/SocialButton'
 import ScrollIcon from '../components/ScrollIcon';
 import Curtain from '../components/Curtain';
+import SEO from "../components/seo";
 
 import star1  from '../assets/images/star1.png'
 import star2  from '../assets/images/star2.png'
@@ -466,7 +467,7 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
 
     return(
     <>
-    {/* <SEO title="Home" /> */}
+    <SEO title={intl.formatMessage({id: "home"})} />
       <Hero className="hero" background={data.backgroundHero.fluid.src}>
 
       <div className="hero__stars">
