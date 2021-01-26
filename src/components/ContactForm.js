@@ -223,7 +223,7 @@ return(
                     />
                 </div>
 
-                <div data-netlify-recaptcha="true"></div>
+                {/* <div data-netlify-recaptcha="true"></div> */}
              
                 
                 <StyledButton type="submit" className="button">

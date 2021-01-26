@@ -4,10 +4,13 @@ const GlobalStyle = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+
     html{
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-display: fallback;
         /* scroll-behavior: smooth; */
     }
     *,*::before,*::after{
