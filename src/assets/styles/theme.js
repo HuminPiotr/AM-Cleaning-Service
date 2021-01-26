@@ -19,7 +19,7 @@ const theme = {
         regular: "1.8rem",
         big: "2.4rem",
         veryBig: '3.2rem',
-        gross: '6rem',
+        gross: '6.4rem',
     },
 
 }
