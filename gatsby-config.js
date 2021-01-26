@@ -41,23 +41,7 @@ module.exports = {
     //     ],
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-google-fonts-v2`,
-      options: {
-        fonts: [
-          {
-            family: 'Lato',
-            variable: true,
-            weights: ['200..900']
-          },
-          {
-            family: 'Montserrat',
-            variable: true,
-            weights: ['200..900']
-          }
-        ]
-      }
-    },
+
     {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
