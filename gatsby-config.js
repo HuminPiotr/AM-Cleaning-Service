@@ -2,9 +2,9 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `AM Cleaning Service`,
+    description: `Profesjonalna firma sprzątająca. Sprzątanie mieszkań, hoteli, apartamentów, po remontach... Oferty pracy sprzątanie Holandia.`,
+    author: `Piotr Humin`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -23,24 +23,7 @@ module.exports = {
         apiToken: process.env.API_DATO_CMS,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Lato`,
-    //         subsets: [`latin-ext`],
-    //         variants: [`400`,`500`, `600`],
-    //       },
-    //       {
-    //         family: `Bebas Neue`,
-    //         subsets: [`latin-ext`],
-    //         variants: [`400`,`500`, `600`],
-           
-    //       }
-    //     ],
-    //   },
-    // },
+
 
     {
       resolve: `gatsby-plugin-scroll-reveal`,

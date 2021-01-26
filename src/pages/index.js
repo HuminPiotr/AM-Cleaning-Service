@@ -74,7 +74,7 @@ const Hero = styled.section`
       @media(min-width: 641px) and (max-width: 1000px){
         left: 5%;
       }
-      @media (min-width: 1001px) (max-width: 1300px){
+      @media (min-width: 1001px) and (max-width: 1300px){
         right: 45%;
       }
     }
