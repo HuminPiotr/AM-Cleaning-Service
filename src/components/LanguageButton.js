@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import styled from 'styled-components'
 import {Link} from 'gatsby';
+import {changeLocale} from 'gatsby-plugin-intl';
 
 import { AppContext } from './AppContext'
 
@@ -148,7 +149,7 @@ const LanguageButton = () => {
             <p>{language.first}</p> 
             <ChangePanel className="changePanel">
                 <button onClick={changeLanguage}>
-                    <Link to={getLocation()} className="changePanel__span">{language.second}</Link>
+                    <Link to={getLocation()} onClick={()=> changeLocale(language.second)} className="changePanel__span">{language.second}</Link>
                 </button>
             </ChangePanel>
         </StyledLanguageButton>

@@ -3,6 +3,7 @@ import {useStaticQuery} from 'gatsby';
 
 import {useIntl} from 'gatsby-plugin-intl';
 
+
 export const AppContext = createContext();
 
 
@@ -27,6 +28,7 @@ const AppProvider = ({children}) => {
 
      const changeLanguageContext = (languages) => {
         setLanguage(languages);
+        
        
     }
 
