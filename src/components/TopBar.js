@@ -105,6 +105,7 @@ const StyledTopBar = styled.header`
         .navSection{
             order:1;
             flex-grow: 0;
+            margin: 0;
         }
         .menu-btn{
             display: flex;

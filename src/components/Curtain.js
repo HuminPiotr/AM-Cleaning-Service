@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const StyledCurtian = styled.div`
     width:100vw;
     height: 100vh;
+    max-height: 1600px;
     background: #fff;
     position: absolute;
     top:0;

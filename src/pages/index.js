@@ -7,6 +7,7 @@ import Image from 'gatsby-image';
 import {useIntl} from 'gatsby-plugin-intl';
 import ReactHtmlParser from "react-html-parser"
 
+import BGImage from '../components/BGImage';
 import Button from '../components/Button'
 import SocialButton from '../components/SocialButton'
 import ScrollIcon from '../components/ScrollIcon';
@@ -31,36 +32,29 @@ const Hero = styled.section`
   height: calc(100vh - 20vh);
   width: 100%;
   
-  background-image: url(${(props) => props.background });
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: contain;
-
   .hero__stars{
     position: relative;
     z-index: -2;
     height: 100%;
 
-    img{
-      position: absolute;
-    }
 
     .star{
+      position: absolute;
       transform:scale(0);
       animation-name: starAnimation;
       animation-duration: .4s;
-      animation-delay: .1s;
+      animation-delay: 1.6s;
       animation-fill-mode: forwards;
     }
 
     #star1{
-      right: 42%;
-      bottom: 25%;
+      right: 45%;
+    bottom: 15%;
       @media(min-width: 641px) and (max-width: 1000px){
         right: 66%;
       }
       @media (min-width: 1001px) and (max-width: 1300px) {
-        right: 68%;
+        right: 48%;
       }
       @media (min-width: 2048px){
         right: 53%;
@@ -70,7 +64,7 @@ const Hero = styled.section`
       top: 0;
       right: 36%;
       width: 5vw;
-      animation-delay: .4s;
+      animation-delay: 2.3s;
       @media(min-width: 641px) and (max-width: 1000px){
         left: 5%;
       }
@@ -84,7 +78,7 @@ const Hero = styled.section`
       width: 6vw;
       right: 1%;
       z-index: 5;
-      animation-delay: .3s;
+      animation-delay: 2.1s;
     }
   }
   #mobileStar{
@@ -151,7 +145,8 @@ const Hero = styled.section`
     }
 
     @media(max-width: 640px){
-      top: 90px;
+      margin-top: 90px;
+      position: static;
       .star{
         display: none;
       }
@@ -163,6 +158,7 @@ const Hero = styled.section`
           justify-content: center;
           flex-grow: 0;
           align-items: center;
+          margin-top: 90px;
           
 
           h1{
@@ -174,6 +170,9 @@ const Hero = styled.section`
         &__star{
           position: absolute;
         }
+      }
+      .fakeBgImage{
+        height: 60vh;
       }
       
       #mobileStar{
@@ -196,19 +195,16 @@ const Hero = styled.section`
 `
 
 const Description = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+
   width:100vw;
   height: 100vh;
-  /* margin-top: -13vh; */
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-  background-image: url(${(props) => props.background});
+
   background-color: #FAFAFA;
 
   .text{
+    position: absolute;
+    top:0;
+    right:0;
     width:45%;
     margin: 50px;
     padding:50px;
@@ -222,6 +218,12 @@ const Description = styled.section`
       font-weight: bold;
     }
   }
+
+  .fakeBgImage{
+    position: static !important;
+    height: 100vh;
+  }
+
   @media (min-width: 2000px){
     .text{
       font-size: ${({theme}) => theme.fontSize.veryBig};
@@ -229,7 +231,6 @@ const Description = styled.section`
   }
 
   @media(min-width: 641px) and (max-width: 1000px){
-    background-position-x: -150px;
     .text{
       width: 100%;
       padding: 15px;
@@ -238,8 +239,9 @@ const Description = styled.section`
   }
 
   @media(max-width: 640px){
-    background-image: none;
-
+    .fakeBgImage{
+      display: none;
+    }
     .text{
       width: 100%;
       padding: 15px;
@@ -258,6 +260,7 @@ const Offer = styled.section`
   position:relative;
   width:100vw;
   height: 100vh;
+  max-height: 1600px;
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -302,12 +305,21 @@ const Offer = styled.section`
       margin-bottom: 25px;
     }
   }
+  @media (min-width: 2220px){
+    li{
+    font-size: ${({theme}) => theme.fontSize.veryBig};
+
+    }
+    h3{
+      font-size: ${({theme}) => theme.fontSize.gross} !important;
+    }
+  }
 `
 
 const SectionMap = styled.section`
   width: 100vw;
-  /* height: 400px; */
   height: 50vh;
+  max-height: 400px;
   overflow: hidden;
   display: flex;
   background: linear-gradient(180deg, #F3EFF5 0%, rgba(243, 239, 245, 0) 122.06%);
@@ -375,17 +387,22 @@ const SectionMap = styled.section`
 
 const SectionWork = styled.section`
   width: 100vw;
-  /* height: 400px; */
   height: 50vh;
+  max-height: 400px;
   overflow: hidden;
   display: flex;
   align-items: center;
 
   .text, .woman{
     width: 50%;
+
   }
 
-
+  .gatsby-image-wrapper{
+    width: 85%;
+    max-width: 715px;
+    max-height: 400px;
+  }
 
 
   .text{
@@ -446,9 +463,6 @@ const IndexPage = ({data}) => {
   const intl = useIntl();
   const language = intl.locale;
 
-  // PAGE CONTENT
-  
-//  const heroText =  data.allDatoCmsIndex.nodes.filter((item) => item.heroNode.locale.includes('nl') );
 function getTextContentPage(data){
 
   for(const item of data){
@@ -468,7 +482,13 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
     return(
     <>
     <SEO title={intl.formatMessage({id: "home"})} />
-      <Hero className="hero" background={data.backgroundHero.fluid.src}>
+      <Hero className="hero">
+      <BGImage 
+          title="descriptionImage"
+          fluid={data.backgroundHero.fluid}
+          height="500px"
+          mobileHeight="200px"
+        />
 
       <div className="hero__stars">
           <img src={star1} alt="star" id="star1" className="star"  />
@@ -491,10 +511,16 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
         <img src={star2} alt="star" id="mobileStar" className="star"/>
       </div>
 
-      
+
     </Hero>
       
-      <Description background={data.backgroundDescription.fluid.src} >
+      <Description>
+      <BGImage 
+          title="heroImage"
+          fluid={data.backgroundDescription.fluid}
+          height="100%"
+          mobileHeight="200px"
+        >
           <div className="text" >
               <p className="text__first">
                 {getTextContentPage(data.textContent.nodes[0].description1)}
@@ -502,6 +528,7 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
               <br></br>
               <p className="text__second">{getTextContentPage(data.textContent.nodes[0].description2)}</p>
           </div>
+         </BGImage>
       </Description>
 
       <Offer background={data.backgroundOffer.fluid.src}>
@@ -538,7 +565,7 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
         </div>
 
         <div className="woman">
-          <Image fixed={data.workWoman.fixed} />
+          <Image fluid={data.workWoman.fluid} />
         </div>
       </SectionWork>
      
@@ -587,8 +614,8 @@ export const query = graphql`
 
             workWoman: imageSharp(original:
               {src: {regex: "/workWoman/"}}) {
-                fixed(quality: 100 height: 400) {
-                  ...GatsbyImageSharpFixed
+                fluid(quality: 100 maxHeight: 400 ) {
+                  ...GatsbyImageSharpFluid
                 }
               }
 

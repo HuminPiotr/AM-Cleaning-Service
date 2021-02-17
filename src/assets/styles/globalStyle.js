@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     }
     *,*::before,*::after{
         box-sizing: inherit;
+ 
         
     } 
     html{
@@ -22,14 +23,15 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         font-size: 1.6rem;
         font-family: 'Lato';
         overflow-x: hidden;
-        
-
-        
+    }
+    section{
+        max-width: 2220px;
+        margin: 0 auto;
     }
     button{
         padding: 0;
@@ -56,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
 
     @media (min-width: 2048px){
         html{
-        font-size: 95%;
+        font-size: 85%;
 
         }
     }

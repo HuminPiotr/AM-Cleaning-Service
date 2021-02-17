@@ -18,7 +18,7 @@ import star3  from '../assets/images/star3.png'
 import { AppContext } from "../components/AppContext";
 
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.section`
     h1{
         margin: 25px;
         width: 100%;
@@ -73,6 +73,7 @@ const StyledWrapper = styled.div`
         position: relative;
         width:100vw;
         height: 75vh;
+        max-height: 1000px;
         padding-bottom: 75px;
         background-repeat: no-repeat;
         background-size: cover;

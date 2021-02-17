@@ -10,6 +10,8 @@ const StyledPhoneBaner = styled.div`
     width: 100vw;
     height: 18vw;
     min-height: 258px;
+    max-width: 2220px;
+        margin: 0 auto;
 
     color: white;
     display: flex;

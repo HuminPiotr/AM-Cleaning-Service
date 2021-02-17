@@ -8,6 +8,8 @@ import { AppContext } from './AppContext';
 // CSS //
 const StyledFooter = styled.footer`
     width: 100vw;
+    /* max-width: 2220px; */
+    margin: 0 auto;
     min-height: 350px;
     display: flex;
     align-items: center;
