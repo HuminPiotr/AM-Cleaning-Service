@@ -51,7 +51,7 @@ module.exports = {
           // Default site language
           defaultLanguage: `pl`,
           // Redirects to `/pl` in the route `/`
-          redirect: true,
+          redirect: false,
         },
       },
     `gatsby-transformer-sharp`,
