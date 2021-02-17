@@ -1,7 +1,7 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState, useEffect } from 'react';
 import {useStaticQuery} from 'gatsby';
 
-import {useIntl} from 'gatsby-plugin-intl';
+import {useIntl, changeLocale} from 'gatsby-plugin-intl';
 
 
 export const AppContext = createContext();
@@ -9,14 +9,20 @@ export const AppContext = createContext();
 
 
 const AppProvider = ({children}) => {
-    const intl = useIntl();
-    const defaultLanguage = intl.locale !=="pl" ? "nl" : intl.locale ;
+    const browserLanguage = typeof window !== 'undefined' ? window.navigator.language : null;
+
+    const defaultLanguage = browserLanguage !=="nl" ? "pl" : 'nl' ;
     const secondLanguage = defaultLanguage === 'pl' ? 'nl' : 'pl';
     const languagesObject = {
         first: defaultLanguage,
         second: secondLanguage,
     }
     const [language, setLanguage] = useState(languagesObject);
+
+    useEffect(() => {
+        changeLocale(defaultLanguage);
+
+    },[]);
 
     const data = useStaticQuery(query);
     const contactInfo = {

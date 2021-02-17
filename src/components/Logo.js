@@ -26,7 +26,7 @@ transition:.3s;
 const Logo = () => {
     const data = useStaticQuery(query);
     const intl = useIntl();
-    const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+    const locale = `/${intl.locale}`;
 
     return (
     <LogoWrapper className="logo">

@@ -561,7 +561,7 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
        <div className="text">
           <h2>{intl.formatMessage({id: "lookingWork"})}</h2>
           <h3>{intl.formatMessage({id: "lookingWork2"})}</h3>
-          <Button link="/praca"> {intl.formatMessage({id: "check"})} </Button>
+          <Button link={`/${language}/praca`}> {intl.formatMessage({id: "check"})} </Button>
         </div>
 
         <div className="woman">

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import styled from 'styled-components'
 import {Link} from 'gatsby';
-import {changeLocale} from 'gatsby-plugin-intl';
+import {useIntl, changeLocale} from 'gatsby-plugin-intl';
 
 import { AppContext } from './AppContext'
 
@@ -9,8 +9,6 @@ import { AppContext } from './AppContext'
 const StyledLanguageButton = styled.button`
     position: relative;
     width:90px;
-    /* top:50%; */
-    /* left: 50%; */
     font-size: 2.6rem;
     background: none;
     border: none;
@@ -107,8 +105,6 @@ const ChangePanel = styled.div`
 const LanguageButton = () => {
 
     const {language,changeLanguageContext} = useContext(AppContext);
-    
-
 
     function handleClick(){
         const button = document.querySelector('.languageButton');
@@ -149,6 +145,8 @@ const LanguageButton = () => {
             <p>{language.first}</p> 
             <ChangePanel className="changePanel">
                 <button onClick={changeLanguage}>
+                    {/* <Link to={getLocation()} onClick={()=> changeLocale(language.second)} className="changePanel__span">{language.second}</Link> */}
+
                     <Link to={getLocation()} onClick={()=> changeLocale(language.second)} className="changePanel__span">{language.second}</Link>
                 </button>
             </ChangePanel>

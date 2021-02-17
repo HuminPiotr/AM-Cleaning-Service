@@ -97,7 +97,7 @@ const StyledNavigation = styled.nav`
 
 const Navigation = () => {
 const intl = useIntl();
-const locale = intl.locale !=="pl" ? `/${intl.locale}` : "";
+const locale =  `/${intl.locale}`;
 
 return(
     <StyledNavigation className="navigation">

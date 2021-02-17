@@ -81,7 +81,6 @@ const MenuHamburger = () => {
         menuButton.classList.toggle('active');
         navigation.classList.toggle('active');
         topBar.classList.toggle('sticky');
-        console.log(topBar);
     }
     return(
         <StyledHamburger className="menu-btn" onClick={handleClick}>
