@@ -178,14 +178,14 @@ const Hero = styled.section`
       #mobileStar{
       display: block;
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       right:25px;
       width: 100px;
 
       transform:scale(0);
       animation-name: starAnimation;
       animation-duration: .4s;
-      animation-delay: .5s;
+      animation-delay: .8s;
       animation-fill-mode: forwards;
     }
     }
