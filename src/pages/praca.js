@@ -181,7 +181,7 @@ const WorkPage = ({data}) => {
         <SEO title={intl.formatMessage({id: "work"})} />
             <h1>{intl.formatMessage({id: "actualAnnouncements"})}</h1>
             <div className="noticeBoard">
-                {noticeCardList.length <= 0 ? <p className="noticeBoard__info">W tej chwili nie mamy żadnych nowych ogłoszeń. </p>: noticeCardList}
+                {noticeCardList.length <= 0 ? <p className="noticeBoard__info">{intl.formatMessage({id: "noNotice"})} </p>: noticeCardList}
 
                 {/* *** STARS *** */}
                 <img src={star2} alt="star" id="star2" className="star"

@@ -26,6 +26,8 @@
     "message": "Bericht",
     "send": "Sturen",
     "contactFormContact": "Contact formulier",
-    "succes": "Bericht is verzonden!"
+    "succes": "Bericht is verzonden!",
+
+    "noNotice": "We hebben momenteel geen nieuwe aankondigingen." 
   
 }

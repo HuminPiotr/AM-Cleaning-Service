@@ -26,6 +26,7 @@
     "message": "Wiadomość",
     "send": "Wyślij",
     "contactFormContact": "Formularz kontaktowy",
-    "succes": "Wiadomość została wysłana!"
+    "succes": "Wiadomość została wysłana!",
 
+    "noNotice": "W tej chwili nie mamy żadnych nowych ogłoszeń."
 }
