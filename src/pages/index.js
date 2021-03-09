@@ -522,6 +522,7 @@ const offerList = getTextContentPage(data.textContent.nodes[0].offer).map((item)
           mobileHeight="200px"
         >
           <div className="text" >
+              <h2>A.M. Cleaning Services</h2>
               <p className="text__first">
                 {getTextContentPage(data.textContent.nodes[0].description1)}
               </p>
