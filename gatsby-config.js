@@ -3,13 +3,15 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `AM Cleaning Service`,
-    description: `Profesjonalna firma sprzątająca. Sprzątanie mieszkań, hoteli, apartamentów, po remontach... Oferty pracy sprzątanie Holandia.`,
+    description: `Profesjonalna firma sprzątająca. Sprzątanie mieszkań, hoteli, apartamentów, po remontach... Oferty pracy sprzątanie Holandia. | Schoonmaakdiensten. Schoonmaak van flats, hotels, appartementen, na renovatie ... Vacatures schoonmaak Nederland.`,
     author: `Piotr Humin`,
+    siteUrl: `https://www.am-cleaningservices.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
