@@ -12,7 +12,7 @@ import Button from '../components/Button'
 import SocialButton from '../components/SocialButton'
 import ScrollIcon from '../components/ScrollIcon';
 import Curtain from '../components/Curtain';
-import SEO from "../components/seo";
+
 
 import star1  from '../assets/images/star1.png'
 import star2  from '../assets/images/star2.png'
@@ -24,7 +24,7 @@ import PhoneBaner from '../components/PhoneBaner'
 
 
 
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
 
 // CSS //
 const Hero = styled.section`
